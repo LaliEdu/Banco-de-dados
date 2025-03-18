@@ -34,3 +34,14 @@ Categorias(ID_Categoria);
 
 ALTER TABLE Livros
 DROP COLUMN Categoria;
+
+-Criação tabela Autor-
+create table Autor(
+	ID_Autor SERIAL primary key,
+	Nome varchar(255)
+);
+
+-Relacionamento de Autor - Livros-
+alter table Autor 
+add column ID_Livros INT references
+Livros(ID_Livros);
