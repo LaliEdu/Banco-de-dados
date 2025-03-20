@@ -1,47 +1,59 @@
-# Banco de Dados
-CREATA DATABASE Livraria
-
-CREATE TABLE Livros (
-    ID_Livro SERIAL PRIMARY KEY,
-    Titulo VARCHAR(255),
-    Autor VARCHAR(255),
-    Editora VARCHAR(255),
-    Endereco_Editora VARCHAR(255),
-    Categoria VARCHAR(255)
+-Criação de tabela livros-
+create table Livros(
+	ID_Livros SERIAL primary key,
+	Titulo varchar(255),
+	Autor varchar(255),
+	Editora varchar(255),
+	Endereco_Editora varchar(255),
+	Categoria varchar(255)
 );
 
-CREATE TABLE Editora (
-    ID_Editora SERIAL PRIMARY KEY,
-    Nome VARCHAR(255),
-    Endereco VARCHAR(255)
+-Criação de tabela Editora-
+create table Editora(
+	ID_Editora SERIAL primary key,
+	Nome varchar(255),
+	Endereco varchar(255)
 );
 
-ALTER TABLE Livros
-ADD COLUMN ID_Editora INT REFERENCES Editoras (ID_Editora);
+-Criação de relacionamentos Livros e Editoras-
+alter table livros 
+add column ID_Editora INT references Editora(ID_Editora);
 
-ALTER TABLE Livros
-DROP COLUMN Editora,
-DROP COLUMN Endereco_Editora;
+-Exclusão de colunas e Endereço-
+alter table livros 
+drop column Editora,
+drop column Endereco_Editora;
 
-CREATE TABLE Categorias (
-    ID_Categoria SERIAL PRIMARY KEY,
-    Nome VARCHAR(255)
-);
-
-ALTER TABLE Livros
-ADD COLUMN ID_Categoria INT REFERENCES
-Categorias(ID_Categoria);
-
-ALTER TABLE Livros
-DROP COLUMN Categoria;
-
--Criação tabela Autor-
-create table Autor(
-	ID_Autor SERIAL primary key,
+-Criação de tabela Categoria-
+create table Categoria(
+	ID_Categoria SERIAL primary key,
 	Nome varchar(255)
 );
 
--Relacionamento de Autor - Livros-
-alter table Autor 
-add column ID_Livros INT references
-Livros(ID_Livros);
+-Criar relacionamento Livros e Categoria-
+alter table Livros 
+add column ID_Categoria INT REFERENCES Categoria(ID_Categoria);
+
+-Excluir a coluna Categoria na tabela Livros-
+alter table Livros 
+drop column Categoria;
+
+-Criação tabela Autor-
+create table Autor(
+	ID_Autores SERIAL primary key,
+	Nome varchar(255)
+);
+
+-Criação de relacionamento de Autor e Livros-
+alter table Livros 
+add column ID_Autor INT REFERENCES Autor(ID_Autor);
+
+-Exclusão de coluna Autor na tabela livros-
+alter table livros 
+drop column Autor;
+
+--delete table Livros--
+--delete database livraria--
+
+
+
