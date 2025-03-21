@@ -29,6 +29,35 @@ insert into livros (Titulo, id_Editora, id_categoria, id_autor)
 		(select id_categoria from Categoria where nome = 'Ficção'),
 		(select id_autor from Autor where nome = 'Clarice Lispector'));
 
+--Novos Dados--
+insert into livros (Titulo, id_Editora, id_categoria, id_autor) values
+('Sol da meia noite', 1,1,1);
+
+insert into Editora (Nome, Endereco) values
+('Crepusculo','Rua da fofoca n 1104');
+
+insert into Categoria (Nome) values
+('Romance');
+
+insert into Autor (Nome) values
+('Stephenie Meyer');
+
+insert into livros (Titulo, id_Editora, id_categoria, id_autor)
+	values
+		('Sol da meia noite',
+		(select id_Editora from Editora where nome = 'Crepusculo'), 
+		(select id_categoria from Categoria where nome = 'Romance'),
+		(select id_autor from Autor where nome = 'Stephenie Meyer')
+	);
+
+insert into livros (preco) values
+(55.00),
+(39.00),
+(25.00),
+(46.00),
+(20.00),
+(19.00);
+
 -Mostrar Dados-
 select * from Categoria c ;
 select * from autor a ;
